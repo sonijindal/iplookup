@@ -34,7 +34,7 @@ Network: 10.0.0.0/8 ASN:  62538
 Notes:
 1. This has been tested on Mac and Linux.
 2. libcurl is required to be installed beforehand.
-3. IPv6 address should be in compressed form. Eg: 2001:0db8:3c4d:0015:1a2f:1a2b:0000:0000 can be abbreviated as 2001:db8:3c4d:15:1a2f:1a2b::
+3. IPv6 address int the db table should be in compressed form. Eg: 2001:0db8:3c4d:0015:1a2f:1a2b:0000:0000 can be abbreviated as 2001:db8:3c4d:15:1a2f:1a2b::
 
 Build:
 ```
