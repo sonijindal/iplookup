@@ -16,9 +16,12 @@ Optional env variable representing a file which contains entries of the form "Ne
 export CCONFIG_FILE_PATH=<filepath>
 ```
 
+Run:
+```
 ./iplookup <ip>
+```
 
-<ip> is IPv4 or IPv6 address
+```<ip>``` is an IPv4 or IPv6 address
 
 Example run:
 
