@@ -35,7 +35,7 @@ Network: 10.0.0.0/8 ASN:  62538
 
 Build:
 ```
-g++ --std=c++1z IPLookup.cpp -o iplookup -lcurl
+g++ --std=c++1z IPLookup.cpp util.cpp -o iplookup -lcurl
 ```
 
 Usage:
