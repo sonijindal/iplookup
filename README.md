@@ -4,18 +4,25 @@ This mapping can be set as an environment variable. If the variable is not set,
 the file is downloaded form https://lg01.infra.ring.nlnog.net/table.txt
 
 Build:
+```
 g++ --std=c++1z IPLookup.cpp -o iplookup -lcurl
+```
 
 Usage:
+
 Optional env variable representing a file which contains entries of the form "NetworkBlock ASN"
 
+```
 export CCONFIG_FILE_PATH=<filepath>
+```
 
 ./iplookup <ip>
 
 <ip> is IPv4 or IPv6 address
 
 Example run:
+
+  ```
 (base) sonika:IPProject$ ./iplookup 10.0.0.9
 ================ IP LOOKUP TOOL ===============
 CONFIG_FILE_PATH set to table.txt
@@ -43,3 +50,4 @@ Network: 10.0.0.0/8 ASN:  62538
 
 ******* Test Start *********
 Enter IP for lookup:^C
+  ```
