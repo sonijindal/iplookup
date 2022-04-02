@@ -189,6 +189,10 @@ class IPLookup
                 }
             }
         }
+        else
+        {
+            cout << "IP <" << ip << "> is invalid" << endl;
+        }
 
         return result;
     }
