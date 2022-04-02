@@ -1,3 +1,5 @@
+// IPLookup tool
+
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -21,7 +23,9 @@ class IPLookup
     const int IPV6_SECTION_SIZE = 16;
 
     public:
-    // Build network address from the input ip by masking some bits
+    // Build network address from the input ipv4 address by masking some bits
+    // as passed in the argument
+    // (10.20.30.41, 31) returns 10.20.30.40/31
     string ApplyMaskToIp(string ip, int maskBits)
     {
         vector<uint8_t> ipv4Octets;
@@ -70,7 +74,9 @@ class IPLookup
         
     }
 
-    // Build network address from the input ip by masking some bits
+    // Build network address from the input ipv6 address by masking some bits
+    // as passed in the argument
+    // (2804:6cac:2000:19:10:1:1:1, 112) returns 2804:6cac:2000:19:10:1:1::/112
     string ApplyMaskToIpv6(string ip, int maskBits)
     {
         vector<uint16_t> ipv4Octets;
@@ -123,7 +129,7 @@ class IPLookup
         
     }
 
-    // Build a map of all the networks we have to the ASNs
+    // Build a map of all the networks we have to the respective ASNs
     bool BuildMap(string fileName)
     {
         ifstream file(fileName);
@@ -154,13 +160,13 @@ class IPLookup
     {
         vector<pair<string, string> > result;
 
-        // Build network from the IP
         ADDR_TYPE type = GetAddrType(ip);
         if (type == IPV4_ADDR)
         {
             // Ipv4
             for (int i = 32; i > 0; --i)
             {
+                // Build network from the IP and mast bits
                 string network = ApplyMaskToIp(ip, i);
                 if (cidrToAsn.find(network) != cidrToAsn.end())
                 {
@@ -174,6 +180,7 @@ class IPLookup
             // Ipv6
             for (int i = 128; i > 0; --i)
             {
+                // Build network from the IP and mast bits
                 string network = ApplyMaskToIpv6(ip, i);
                 if (cidrToAsn.find(network) != cidrToAsn.end())
                 {

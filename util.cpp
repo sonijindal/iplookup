@@ -1,5 +1,8 @@
+// Util functions
+
 #include "util.h"
 
+// Print all the results in Network : ASN format
 void PrintResult(vector<pair<string, string> > result)
 {
     if (result.size() == 0)
@@ -16,6 +19,8 @@ void PrintResult(vector<pair<string, string> > result)
     }
 }
 
+// Get the IP address type of an input ip string
+// Return is one of IPv4, IPv6 or INVALID
 enum ADDR_TYPE GetAddrType(string ip)
 {
     struct in6_addr inaddrv6;
@@ -31,6 +36,10 @@ enum ADDR_TYPE GetAddrType(string ip)
     return INVALID;
 }
 
+// Return a filename which contains data to be used as DB
+// Use the CONFIG_FILE_PATH for a user supplied file
+// Else download the file from a predefined location
+// If download fails, empty string is returned
 string GetFileName()
 {
     string fileName;
@@ -56,6 +65,7 @@ string GetFileName()
     return fileName;
 }
 
+// Download the mapping file from a url using curl
 bool DownloadFile(string url, string fileName)
 {
     CURL *curl_handle;
