@@ -58,12 +58,15 @@ Run:
 ```<ip>``` is an IPv4 or IPv6 address. This parameter is optional.
 If ip is not passed during the invocation, the user is asked for the input on stdin.
 
-Example run:
+Setup:
 ```
 (base) sonika:iplookup$ sudo apt-get install libcurl
 (base) sonika:iplookup$ g++ --std=c++1z IPLookup.cpp util.cpp -o iplookup -lcurl
 (base) sonika:iplookup$ export CCONFIG_FILE_PATH=table.txt
+```
 
+IPv4:
+```
 (base) sonika:iplookup$ ./iplookup
 ================ IP LOOKUP TOOL ===============
 Usage: ./iplookup <optional ip>
@@ -96,5 +99,22 @@ Printing result:
 Network: 8.8.8.0/24 ASN:  15169
 Network: 8.0.0.0/12 ASN:  3356
 Network: 8.0.0.0/9 ASN:  3356
+(base) sonika:iplookup$ 
+```
+
+IPv6:
+```
+(base) sonika:iplookup$ ./iplookup 2001:dc7:cd00:0000:0010:2b00:08a0:0000
+================ IP LOOKUP TOOL ===============
+Usage: ./iplookup <optional ip>
+If no ip is passed during invokation, user can pass input on stdin
+CONFIG_FILE_PATH can be set to a file with network to ASN mapping
+===============================================
+
+CONFIG_FILE_PATH is set to table.txt
+File:table.txt
+Printing result:
+Network: 2001:dc7:cd00::/48 ASN:  24151
+Network: 2001:dc7::/32 ASN:  24151
 (base) sonika:iplookup$ 
 ```
