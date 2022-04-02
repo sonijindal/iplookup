@@ -20,7 +20,7 @@ Flow:
 
 4. Look for each of these networks in the map.
 5. For each entry found in the map, add the network and the ASN into the result vector.
-6. Results will be in th sorted order from more specific to less specific.
+6. Results will be in the sorted order from more specific to less specific.
 ```
 (base) sonika:iplookup$ ./iplookup 10.20.30.41
 ================ IP LOOKUP TOOL ===============
