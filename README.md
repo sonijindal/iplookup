@@ -62,6 +62,10 @@ If ip is not passed during the invocation, the user is asked for the input on st
 
 Example run:
 ```
+(base) sonika:iplookup$ sudo apt-get install libcurl
+(base) sonika:iplookup$ g++ --std=c++1z IPLookup.cpp util.cpp -o iplookup -lcurl
+(base) sonika:iplookup$ export CCONFIG_FILE_PATH=table.txt
+
 (base) sonika:iplookup$ ./iplookup
 ================ IP LOOKUP TOOL ===============
 Usage: ./iplookup <optional ip>
