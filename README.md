@@ -3,6 +3,12 @@ It checks an input IP against a database of network block to ASN mappings.
 This mapping can be set as an environment variable. If the variable is not set,
 the file is downloaded form https://lg01.infra.ring.nlnog.net/table.txt
 
+This has been tested on Mac and Linux.
+libcurl is required to be installed at the moment:
+```
+sudo apt-get install libcurl
+```
+
 Flow:
 1. Find the file, either local if env variable (CONFIG_FILE_PATH) is set or download the file using curl.
 2. Read the lines in the file and split each line by space. Insert them into a map of network to asn mapping. Exampple entry in map: Key: 8.8.8.0/24 Value: 15169
