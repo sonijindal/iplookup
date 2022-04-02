@@ -1,5 +1,5 @@
 IPLookup is a tool to look up for the ASN and the block of network a given ip belongs to.
-It checks an input IP against a database of network block to ASN mappings.
+It checks an input IP (ipv4 or ipv6) against a database of network block to ASN mappings.
 This mapping can be set as an environment variable. If the variable is not set,
 the file is downloaded form https://lg01.infra.ring.nlnog.net/table.txt
 
