@@ -213,6 +213,8 @@ int main(int argc, char* argv[])
     cout << "Usage: ./iplookup <optional ip>" << endl;
     cout << "If no ip is passed during invokation, user can pass input on stdin" << endl;
     cout << "CONFIG_FILE_PATH can be set to a file with network to ASN mapping" << endl;
+    cout << "===============================================" << endl;
+    cout << endl;
 
     string ip = "";
     if (argc == 2)
@@ -225,12 +227,14 @@ int main(int argc, char* argv[])
     string fileName = GetFileName();
     if (fileName == "")
     {
+        cerr << "Invalid file!" << endl;
         return -1;
     }
     
     // Build DB
     if (lookup.BuildMap(fileName) == false)
     {
+        cerr << "Building DB failed!" << endl;
         return -1;
     }
 
@@ -241,6 +245,7 @@ int main(int argc, char* argv[])
         vector<pair<string, string> > result = lookup.FindNetworkAndAsn(ip);
         if (result.size() == 0)
         {
+            cerr << "No result found, check the input!" << endl;
             return -1;
         }
         PrintResult(result);
@@ -250,5 +255,6 @@ int main(int argc, char* argv[])
         // Work on multiple inputs from user 
         ProcessInputs(lookup);
     }
+
     return 0;
 }

@@ -40,7 +40,7 @@ string GetFileName()
 
     if(filePath == NULL)
     {
-        cout << "CONFIG_FILE_PATH not set" << endl;
+        cout << "CONFIG_FILE_PATH is not set, so download" << endl;
         fileName = "download.txt";
         if (DownloadFile(url, fileName) == false)
         {
@@ -50,7 +50,7 @@ string GetFileName()
     }
     else
     {
-        cout << "CONFIG_FILE_PATH set to " << filePath << endl;
+        cout << "CONFIG_FILE_PATH is set to " << filePath << endl;
         fileName = filePath;
     }
     return fileName;
