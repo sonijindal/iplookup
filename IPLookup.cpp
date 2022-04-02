@@ -187,34 +187,11 @@ class IPLookup
     }
 };
 
-int main(int argc, char* argv[])
+void ProcessInputs(IPLookup lookup)
 {
-    // Validate input
-    if (argc != 2)
-    {
-        cerr << "Usage: ./iplookup <ip>" << endl;
-        return -1;
-    }
-    string ip = argv[1];
-    cout << "================ IP LOOKUP TOOL ===============" << endl;
-    IPLookup lookup;
-
-    // Get DB File Name
-    string fileName = GetFileName();
-    if (fileName == "")
-    {
-        return -1;
-    }
-    // Build DB
-    lookup.BuildMap(fileName);
-
-    cout << "******* Test Start *********" << endl;
-    // Lookup for input IP
-    vector<pair<string, string> > result = lookup.FindNetworkAndAsn(ip);
-    PrintResult(result);
-
     // Scan for more IPs
-    cout << "******* Test End *********" << endl;
+    vector<pair<string, string> > result;
+    string ip;
     cout << endl;
     cout << "******* Test Start *********" << endl;
     cout << "Enter IP for lookup:";
@@ -227,6 +204,51 @@ int main(int argc, char* argv[])
         cout << "******* Test Start *********" << endl;
         cout << "Enter IP for lookup:";
     }
+}
 
+int main(int argc, char* argv[])
+{
+    // Validate input
+    cout << "================ IP LOOKUP TOOL ===============" << endl;
+    cout << "Usage: ./iplookup <optional ip>" << endl;
+    cout << "If no ip is passed during invokation, user can pass input on stdin" << endl;
+    cout << "CONFIG_FILE_PATH can be set to a file with network to ASN mapping" << endl;
+
+    string ip = "";
+    if (argc == 2)
+    {
+        ip = argv[1];
+    }
+    IPLookup lookup;
+
+    // Get DB File Name
+    string fileName = GetFileName();
+    if (fileName == "")
+    {
+        return -1;
+    }
+    
+    // Build DB
+    if (lookup.BuildMap(fileName) == false)
+    {
+        return -1;
+    }
+
+    // Process single input
+    // Lookup for input IP
+    if (ip != "")
+    {
+        vector<pair<string, string> > result = lookup.FindNetworkAndAsn(ip);
+        if (result.size() == 0)
+        {
+            return -1;
+        }
+        PrintResult(result);
+    }
+    else
+    {
+        // Work on multiple inputs from user 
+        ProcessInputs(lookup);
+    }
     return 0;
 }
