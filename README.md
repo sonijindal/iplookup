@@ -3,6 +3,7 @@ It checks an input IP against a database of network block to ASN mappings.
 This mapping can be set as an environment variable. If the variable is not set,
 the file is downloaded form https://lg01.infra.ring.nlnog.net/table.txt
 
+
 Build:
 ```
 g++ --std=c++1z IPLookup.cpp -o iplookup -lcurl
@@ -22,6 +23,7 @@ Run:
 ```
 
 ```<ip>``` is an IPv4 or IPv6 address
+It runs the initial db building and first lookup of ths IP. The program also waits for input of more IPs to lookup.
 
 Example run:
 
